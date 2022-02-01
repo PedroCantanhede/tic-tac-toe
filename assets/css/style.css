@@ -1,0 +1,255 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+/* CSS */
+:root {
+    --background-color: linear-gradient(135deg, #72308b, #9D50BB);
+    --primary-color: #9D50BB;
+    --secundary-color: #72308b;
+    --white-color: #FFF;
+    --gray-color: #ccc;
+
+    --body-font: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+}
+
+body {
+    height: 100vh;
+    background: var(--background-color);
+}
+
+.select-box, .select-mode, .play-board, .result-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+
+/* Select Mode | PVE or PVP */
+/* Select Box | Player (X) or Player (O) */
+
+.select-mode {
+    display: none;
+}
+
+.select-mode,
+.select-box {
+    background: var(--white-color);
+    padding: 20px 25px 25px;
+    border-radius: 5px;
+    max-width: 330px;
+    width: 100%;
+}
+
+.select-mode.hide,
+.select-box.hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.select-mode header,
+.select-box header {
+    color: var(--secundary-color);
+    font-size: 1.438rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-color);
+}
+
+.select-mode .title,
+.select-box .title {
+    color: #491a5a;
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.select-mode .options,
+.select-box .options {
+    display: flex;
+    width: 100%;
+}
+
+.options button {
+    width: 100%;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 8px 0;
+    border: none;
+    outline: none;
+    background: var(--primary-color);
+    border-radius: 5px;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.options button:hover {
+    transform: scale(0.96);
+}
+
+.options button.playerX,
+.options button.pve {
+    margin-right: 5px;
+}
+
+.options button.playerO,
+.options button.pvp {
+    margin-left: 5px;
+}
+
+/* Board Section */
+
+.play-board {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.play-board.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.play-board .details {
+    background: var(--white-color);
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.play-board .details .players {
+    display: flex;
+    width: 100%;
+
+    position: relative;
+    justify-content: space-between;
+}
+
+.play-board .details span { 
+    width: 100%;
+    color: var(--primary-color);
+    border-radius: 5px;
+    padding: 7px 00;
+    font-size: 1.188rem;
+    font-weight: 500;
+    cursor: default;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.details span:first-child {
+    color: var(--white-color);
+}
+
+.details .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 5px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.players.active span:first-child {
+    color: var(--primary-color);
+}
+
+.players.active span:nth-child(2) {
+    color: var(--white-color);
+}
+
+.players.active .slider {
+    left: 50%;
+}
+
+.play-board .play-area {
+    margin-top: 20px;
+}
+
+.play-board section {
+    display: flex;
+}
+
+.play-board section span {
+    display: block;
+    margin: 2.5px;
+    width: 80px;
+    height: 80px;
+    background: var(--white-color);
+    border-radius: 5px;
+    font-size: 2.5rem;
+    text-align: center;
+    line-height: 80px;
+    color: var(--primary-color);
+}
+
+/* Result Box */
+.result-box {
+    background: var(--white-color);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 350px;
+    width: 100%;
+    
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+
+}
+    
+.result-box.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+.result-box .won-text {
+    font-size: 1.563rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+.result-box .won-text span {
+    font-weight: 600;
+    margin: 0 5px;
+    color: var(--secundary-color);
+}
+
+.result-box .btn {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.result-box .btn button {
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    border: none;
+    outline: none;
+    background: var(--primary-color);
+    border-radius: 5px;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.result-box .btn button:hover {
+    transform: scale(0.96);
+}
