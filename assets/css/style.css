@@ -45,7 +45,7 @@ body {
     background: var(--white-color);
     padding: 20px 25px 25px;
     border-radius: 5px;
-    max-width: 330px;
+    max-width: 400px;
     width: 100%;
 }
 
@@ -90,10 +90,11 @@ body {
     border-radius: 5px;
     color: var(--white-color);
     cursor: pointer;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
 }
 
-.options button:hover {
+.options button:hover,
+.btn button:hover {
     transform: scale(0.96);
 }
 
@@ -106,6 +107,21 @@ body {
 .options button.pvp {
     margin-left: 5px;
 }
+
+/* My Name Credits */
+
+.select-box .my-name,
+.select-mode .my-name {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.063rem;
+    font-weight: 500;
+  }
+  .select-box .my-name a,
+  .select-mode .my-name {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
 
 /* Board Section */
 
@@ -139,7 +155,7 @@ body {
     width: 100%;
     color: var(--primary-color);
     border-radius: 5px;
-    padding: 7px 00;
+    padding: 10px 0;
     font-size: 1.188rem;
     font-weight: 500;
     cursor: default;
@@ -161,7 +177,6 @@ body {
     height: 100%;
     background: var(--primary-color);
     border-radius: 5px;
-    z-index: 2;
     transition: all 0.3s ease;
 }
 
@@ -183,6 +198,7 @@ body {
 
 .play-board section {
     display: flex;
+    margin-bottom: 1px;
 }
 
 .play-board section span {

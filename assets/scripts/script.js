@@ -13,6 +13,7 @@ window.onload = () => {
     for (let i = 0; i < allBox.length; i++) { // Adiciona o atributo onclick em todas as seções com spans disponíveis
         allBox[i].setAttribute("onclick", "clickedBox(this)");
     }
+}
 
     selectXBtn.onclick = () => {
         selectBox.classList.add("hide"); // Oculta a caixa de seleção (select-box) quando o botão "Jogador (X)" é clicado
@@ -23,7 +24,7 @@ window.onload = () => {
         playBoard.classList.add("show"); // Mostra o tabuleiro (playboard) quando o botão "Jogador (O)" é clicado
         players.setAttribute("class", "players active player"); // Adicionando três nomes de classe no elemento player
     }
-}
+
 
 let playerXIcon = "fas fa-times"; // Classe do ícone do Font Awesome
 let playerOIcon = "fas fa-dot-circle"; // Classe do ícone do Font Awesome
@@ -35,14 +36,14 @@ function clickedBox(element) {
 
     // Se o elemento conter a classe .player, então...
     if(players.classList.contains("player")) {
-        element.innerHTML = `<i class="${playerOIcon}"></i>`; // Adiciona a tag de ícone círculo (O) dentro do elemento clicado
-        players.classList.add("active");
         // Se o jogador selecionar O, alteraremos o valor do playerSign para O
         playerSign = "O";
+        element.innerHTML = `<i class="${playerOIcon}"></i>`; // Adiciona a tag de ícone círculo (O) dentro do elemento clicado
+        players.classList.remove("active"); // Remove a classe .active em .players
         element.setAttribute("id", playerSign);
     } else { // Se não
         element.innerHTML = `<i class="${playerXIcon}"></i>`; // Adiciona a tag de ícone cruzado (X) dentro do elemento clicado
-        players.classList.add("active");
+        players.classList.add("active"); // Adiciona a classe .active em .players
         element.setAttribute("id", playerSign);
     }
     selectWinner(); // Chamando a função selectWinner | Selecionando Vencedor
@@ -71,13 +72,13 @@ function bot(runBot) {
     if(array.length > 0) {
         if(players.classList.contains("player")) {
             allBox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`; // Adiciona a tag de ícone cruzado (X) dentro do elemento clicado
-            players.classList.remove("active");
+            players.classList.add("active"); // Adiciona a classe .active no .players 
             // Se o usuário for O, então o valor do id da box será X
             playerSign = "X";
             allBox[randomBox].setAttribute("id", playerSign);
         } else { // Se não
             allBox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`; // Adiciona a tag de ícone círculo (O) dentro do elemento clicado 
-            players.classList.remove("active");
+            players.classList.remove("active"); // Remove a classe .active no .players 
             allBox[randomBox].setAttribute("id", playerSign);
         }
         selectWinner(); // Chamando a função selectWinner | Selecionando Vencedor
@@ -114,5 +115,24 @@ function selectWinner() { // Se uma combinação deles corresponder, selecione o
 
         // Exibindo a box com o resultado
         wonText.innerHTML = `O Jogador <span>${playerSign}</span> ganhou!`;
+    } else {
+        // Se a partida empatar
+        // Primeiro checa todos os id's. Se todo span tiver id e ninguém ganhou o jogo, então empatou!
+        if(getId(1) != "" && getId(2) != "" && getId(3) != "" && getId(4) != "" && getId(5) != "" && getId(6) != "" && getId(7) != "" && getId(8) != "" && getId(9) != "") {
+            runBot = false;
+            bot(runBot);
+            setTimeout(()=> { // Delay na exibição da result box (Caixa com o Vencedor)
+                playBoard.classList.remove("show");
+                resultBox.classList.add("show");
+            }, 700); // Delay de 700ms | 700 milesegundos
+
+        // Exibindo a box com empate
+        wonText.innerHTML = `A partida deu <span>empate!</span>`;
+        }
     }
+}
+
+// Recomeçando a partida
+replayBtn.onclick = () => {
+    window.location.reload(); // Recarrega a página atual
 }
