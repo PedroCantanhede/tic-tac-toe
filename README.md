@@ -18,7 +18,7 @@ Projeto pessoal com o intuito de elaborar o tradicional jogo da velha utilizando
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c0a8e42d-208a-41cd-aabe-c5f405a37e3b/deploy-status)](https://tic-tac-toe-appjs.netlify.app/)
 
 <div align="center" >
-  <img alt="Tic Tac Toe Layout" title="Tic Tac Toe" src="github/layout.png"/>
+  <img alt="Tic Tac Toe Layout" title="Tic Tac Toe" src="github/layout.PNG"/>
 </div>
 
 ## 🛠️ Tecnologias
